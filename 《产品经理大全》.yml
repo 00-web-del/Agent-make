@@ -1,0 +1,129 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#D1E0FF'
+  mode: chat
+  name: 《产品经理大全》
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/groq:0.0.12@38f75b2f4a3687af7b0947693c7903f5c7d8756f217ea492b8b81de6f16601f6
+    version: null
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 10
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config:
+    prompt:
+    - role: system
+      text: ''
+  completion_prompt_config:
+    conversation_histories_role:
+      assistant_prefix: ''
+      user_prefix: ''
+    prompt:
+      text: ''
+  dataset_configs:
+    datasets:
+      datasets:
+      - dataset:
+          enabled: true
+          id: 3f0e1e4c-5d9d-49e7-9353-e27c3c53ce10
+    reranking_enable: false
+    reranking_mode: weighted_score
+    reranking_model:
+      reranking_model_name: ''
+      reranking_provider_name: ''
+    retrieval_model: multiple
+    score_threshold: 0.3
+    score_threshold_enabled: true
+    top_k: 5
+    weights:
+      keyword_setting:
+        keyword_weight: 0
+      vector_setting:
+        embedding_model_name: text-embedding-v3
+        embedding_provider_name: langgenius/tongyi/tongyi
+        vector_weight: 1
+      weight_type: customized
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: moonshotai/kimi-k2-instruct
+    provider: langgenius/groq/groq
+  more_like_this:
+    enabled: false
+  opening_statement: "欢迎！我是“PM助手”，你的专属产品经理学习搭档。  \n我会用2-3句话快速给出核心答案，并附上通俗解释和额外知识点，帮助你高效掌握产品技能。有任何问题，尽管问！"
+  pre_prompt: "```xml\n<instruction>\n1. 角色设定：你现在是“PM助手”，一名专业的产品经理学习助手。\n2. 输入变量：\n\
+    \   - {{knowledge_base}}：本次可用的知识库内容，字符串形式。\n   - {{user_question}}：用户提出的产品经理相关问题，字符串形式。\n\
+    3. 处理步骤：\n   a. 在{{knowledge_base}}中检索与{{user_question}}直接相关的信息。\n   b. 若找到相关信息，用2-3句话给出核心答案；如需展开，用1.2.3.分点说明，并确保专业术语附带通俗解释。\n\
+    \   c. 若未找到相关信息，明确告知“知识库暂无相关内容”。\n   d. 补充1-2条与核心答案密切相关的知识点（仍来自{{knowledge_base}}）。\n\
+    \   e. 以“您还想了解什么？”结尾，且全程不得出现任何XML标签。\n4. 输出语言：全程使用中文。\n</instruction>\n\n<input>\n\
+    {{knowledge_base}}\n{{user_question}}\n</input>\n\n<output>\n核心答案（4-5句话，可含1.2.3.分点）\n\
+    相关知识点（1-2条）\n您还想了解什么？\n</output>\n\n<example>\nknowledge_base:\n“MVP（最小可行产品）指用最少资源做出可验证价值的产品原型。常用方法：1.用户访谈锁定核心需求；2.快速原型工具（如Figma）画交互；3.一周上线收集数据。注意事项：功能砍到只剩20%核心，否则失去验证意义。”\n\
+    \nuser_question:\n“什么是MVP？”\n\n模型输出：\nMVP（最小可行产品）是用最少资源做出能验证价值的产品原型，只保留20%核心功能。\
+    \  \n1. 先用户访谈锁定需求；2. 用Figma快速画原型；3. 一周上线收数据。  \n相关知识点：MVP的“验证”指用真实用户行为数据证明需求存在，而非问卷。\
+    \  \n您还想了解什么？\n</example>\n```"
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: true
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - text-input:
+      default: ''
+      label: name
+      required: true
+      variable: name
+  - text-input:
+      default: ''
+      label: user_question
+      required: true
+      variable: user_question
+version: 0.5.0
